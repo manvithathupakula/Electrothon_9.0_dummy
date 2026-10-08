@@ -1,0 +1,116 @@
+.sponsorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: center;
+  justify-items: center;
+}
+
+.tile {
+  background: rgba(10, 15, 30, 0.88);
+  border: 1px solid rgba(59, 93, 201, 0.9);
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform 0.28s cubic-bezier(.2,.9,.2,1), box-shadow 0.28s ease, border-color 0.28s ease;
+  cursor: pointer;
+  will-change: transform, box-shadow;
+  animation: popIn 420ms ease both;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tile:hover {
+  transform: translateY(-10px) scale(1.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  border-color: #00f3ff;
+}
+
+
+.tileLogo {
+  width: 100%;
+  height: 140px;          
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.tileImage {
+  width: auto !important;
+  
+  /* CHANGE THIS: 65% ensures there is space on top and bottom */
+  max-height: 65% !important; 
+  
+  max-width: 80%;          /* Adds space on the sides too */
+  object-fit: contain;     
+  transform: scale(var(--img-scale, 1));
+}
+
+@media (max-width: 768px) {
+  .tileImage {
+    /* Prevent very large scalable logos from spilling over layout limits on tablets */
+    transform: scale(min(var(--img-scale, 1), 2.2));
+  }
+}
+
+@media (max-width: 450px) {
+  .tileImage {
+    /* Lower clamp for narrow phones like S8+ to fit completely */
+    transform: scale(min(var(--img-scale, 1), 1.6));
+  }
+}
+
+/* -------------------- */
+
+.tileName { font-weight: 700; color: #fff; font-size: 20px; }
+.tileLevel { color: #a0a0ff; font-size: 14px; }
+
+@keyframes popIn {
+  0% { transform: translateY(8px) scale(0.98); opacity: 0; }
+  60% { transform: translateY(-4px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ───────── TIER LABELS (Gold / Silver / etc.) ───────── */
+
+/* ───────── TIER LABELS (MATCH NAVBAR EXACTLY) ───────── */
+
+.tierLabel {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0.25em; 
+  font-weight: 400;        
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  margin: 2.5rem 0 3rem;
+}
+
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  justify-items: center;
+  max-width: 900px;   
+  margin: 0 auto;     
+}
+
+.mediaTile {
+  width: 100%;
+  max-width: 420px;  
+}
+
+
+
+/* Optional: slightly brighter for Gold */
+.tierLabel.gold {
+  color: #ffd76a;
+}
+
+/* Optional: subtle dim for In-Kind */
+.tierLabel.inkind {
+  color: rgba(255, 255, 255, 0.65);
+}
